@@ -1,0 +1,476 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-wood-50: #fdf8f3;
+  --color-wood-100: #f9f0e6;
+  --color-wood-200: #f1ddc7;
+  --color-wood-300: #e7c4a0;
+  --color-wood-400: #dca373;
+  --color-wood-500: #d4844f;
+  /* Primary */
+  --color-wood-600: #c26d3a;
+  --color-wood-700: #a15832;
+  --color-wood-800: #82472f;
+  --color-wood-900: #6a3d29;
+
+  /* Secondary Colors - Gỗ Óc Chó */
+  --color-walnut-50: #f8f7f5;
+  --color-walnut-100: #efede8;
+  --color-walnut-200: #ddd8d0;
+  --color-walnut-300: #c5bcb0;
+  --color-walnut-400: #a8998a;
+  --color-walnut-500: #8b7a69;
+  /* Secondary */
+  --color-walnut-600: #6f5f51;
+  --color-walnut-700: #5a4d42;
+  --color-walnut-800: #4a4038;
+  --color-walnut-900: #3e3630;
+
+  /* Accent Colors */
+  --color-sage: var(--wood-300);
+  /* Xanh lá nhạt */
+  --color-terracotta: #c65d32;
+  /* Đất nung */
+  --color-cream: #f7f5f1;
+  /* Kem */
+  --color-charcoal: #2d2926;
+  --border-radius-lg: var(--radius);
+  --border-radius-md: calc(var(--radius) - 2px);
+  --border-radius-sm: calc(var(--radius) - 4px);
+  --font-family-sans: "Inter", "ui-sans-serif", "system-ui";
+  --font-family-serif: "Playfair Display", "ui-serif", "Georgia";
+  --font-family-mono: "JetBrains Mono", "ui-monospace", "SFMono-Regular";
+  --animation-fade-in: "fade-in 0.3s ease-out";
+  --animation-slide-in-top: "slide-in-from-top 0.3s ease-out";
+  --animation-slide-in-bottom: "slide-in-from-bottom 0.3s ease-out";
+  --animation-accordion-down: "accordion-down 0.2s ease-out";
+  --animation-accordion-up: "accordion-up 0.2s ease-out";
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-top {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  --box-shadow-wood: "0 4px 6px -1px rgba(212, 132, 79, 0.1), 0 2px 4px -1px rgba(212, 132, 79, 0.06)";
+  --box-shadow-wood-lg: "0 10px 15px -3px rgba(212, 132, 79, 0.1), 0 4px 6px -2px rgba(212, 132, 79, 0.05)";
+}
+
+
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+
+    --wood-50: #fdf8f3;
+    --wood-100: #f9f0e6;
+    --wood-200: #f1ddc7;
+    --wood-300: #e7c4a0;
+    --wood-400: #dca373;
+    --wood-500: #d4844f;
+    /* Primary */
+    --wood-600: #c26d3a;
+    --wood-700: #a15832;
+    --wood-800: #82472f;
+    --wood-900: #6a3d29;
+
+    /* Secondary Colors - Gỗ Óc Chó */
+    --walnut-50: #f8f7f5;
+    --walnut-100: #efede8;
+    --walnut-200: #ddd8d0;
+    --walnut-300: #c5bcb0;
+    --walnut-400: #a8998a;
+    --walnut-500: #8b7a69;
+    /* Secondary */
+    --walnut-600: #6f5f51;
+    --walnut-700: #5a4d42;
+    --walnut-800: #4a4038;
+    --walnut-900: #3e3630;
+
+    /* Semantic Colors */
+    --background: var(--cream);
+    --foreground: var(--charcoal);
+    --card: var(--wood-50);
+    --card-foreground: var(--charcoal);
+    --popover: var(--wood-50);
+    --popover-foreground: var(--charcoal);
+    --primary: var(--wood-500);
+    --primary-foreground: var(--charcoal);
+    --secondary: var(--walnut-500);
+    --secondary-foreground: var(--charcoal);
+    --muted: var(--walnut-100);
+    --muted-foreground: var(--walnut-700);
+    --accent: var(--sage);
+    --accent-foreground: var(--charcoal);
+    --destructive: var(--terracotta);
+    --destructive-foreground: var(--charcoal);
+    --border: var(--walnut-200);
+    --input: var(--wood-100);
+    --ring: var(--wood-500);
+    --cream: #f7f5f1;
+    --charcoal: #2d2926;
+    --sage: var(--wood-300);
+    --terracotta: #c65d32;
+    --walnut: #8b7a69;
+    --wood: #d4844f;
+    --color-destructive: var(--color-red-500);
+  }
+
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+@layer components {
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--wood-100);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--wood-400);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--wood-500);
+  }
+
+  /* Wood texture effect for cards */
+  .wood-texture {
+    background-image:
+      linear-gradient(90deg, rgba(212, 132, 79, 0.1) 1px, transparent 1px),
+      linear-gradient(rgba(212, 132, 79, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Glass morphism for modern cards */
+  .glass-card {
+    backdrop-filter: blur(10px);
+    background: rgba(253, 248, 243, 0.8);
+    border: 1px solid rgba(212, 132, 79, 0.2);
+  }
+
+  /* Custom focus styles */
+  .focus-wood:focus {
+    outline: none;
+    ring: 2px solid var(--wood-500);
+    ring-offset: 2px;
+    ring-offset-color: var(--background);
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Thin scrollbar utilities */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--wood-400) var(--wood-100);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: var(--wood-100);
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--wood-400);
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--wood-500);
+  }
+
+  .scrollbar-thumb-wood-300::-webkit-scrollbar-thumb {
+    background: var(--wood-300);
+  }
+
+  .scrollbar-thumb-wood-400::-webkit-scrollbar-thumb {
+    background: var(--wood-400);
+  }
+
+  .scrollbar-track-wood-100::-webkit-scrollbar-track {
+    background: var(--wood-100);
+  }
+
+  .hover\:scrollbar-thumb-wood-400:hover::-webkit-scrollbar-thumb {
+    background: var(--wood-400);
+  }
+}
+
+/* Scrollbar hiding utilities */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+/* Smooth touch scrolling */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Modal body scroll prevention */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure modals are full screen on mobile */
+@media (max-width: 768px) {
+  /* Prevent any potential viewport issues */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Target the dialog portal */
+  [data-radix-portal] {
+    position: fixed !important;
+    inset: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  /* Target all dialog elements with high specificity */
+  [data-radix-dialog-overlay] {
+    position: fixed !important;
+    inset: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+
+  [data-radix-dialog-content] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Target dialog content by role as well */
+  [role="dialog"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Additional fallback for dialog content */
+  .dialog-content-mobile {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure any parent containers don't add padding */
+  .dialog-content-mobile > * {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Force override any conflicting styles */
+  .fixed.inset-0,
+  .fixed.z-50,
+  .grid.w-full {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* Touch optimization */
+.touch-manipulation {
+  touch-action: manipulation;
+}

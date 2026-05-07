@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: mysql:8.0
+    command: --skip-ssl --skip-mysqlx --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123456
+      MYSQL_DATABASE: furniture_store
+    volumes:
+      - mysql_data:/var/lib/mysql  # Sử dụng named volume thay vì bind mount
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+
+  redis:
+    image: redis:8.0.1-alpine
+    volumes:
+      - redis_data:/data  # Sử dụng named volume thay vì bind mount
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:    # Docker sẽ quản lý volume này
+  redis_data:
